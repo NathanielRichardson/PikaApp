@@ -196,7 +196,7 @@ const AppNavigator = createStackNavigator({
         screen: FunFactsScreen
     },
 }, {
-    initialRouteName: 'Map',
+    initialRouteName: 'Home',
 });
 
 // This is where you can put all of your styles
@@ -267,8 +267,9 @@ const styles = StyleSheet.create({
     button: {
         width: '50%',
         height: '50%',
-        padding: 0,
     }
 });
+
+//Awful color that the town uses #857C2F
 
 export default createAppContainer(AppNavigator);
