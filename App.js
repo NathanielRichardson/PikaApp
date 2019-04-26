@@ -1,8 +1,9 @@
 // Basic imports
 import React from 'react';
-import { View, Text, Button, AppRegistry, TextInput, StyleSheet, TouchableOpacity, Image, ImageBackground } from 'react-native';
-import { createAppContainer, createStackNavigator, StackActions, NavigationActions } from 'react-navigation'; //Imports for the navigation
-import MenuItem from './app/components/MenuItems'
+import { View, Text, Button, TextInput, StyleSheet, TouchableOpacity, Image, ScrollView } from 'react-native';
+import { createAppContainer, createStackNavigator, } from 'react-navigation'; //Imports for the navigation
+import MenuItem from './app/components/MenuItems';
+import ProgressItem from './app/components/ProgressItem';
 
 // HomeScreen code
 class HomeScreen extends React.Component {
@@ -46,7 +47,7 @@ class HomeScreen extends React.Component {
 class WelcomeScreen extends React.Component {
     render() {
         const { navigation } = this.props;
-        const firstName = navigation.getParam('firstName') //Gathering the first name from the home screen
+        const firstName = navigation.getParam('firstName'); //Gathering the first name from the home screen
         return (
             <View style={styles.greenContainer}>
                 <View style={styles.secondTop}>
@@ -84,8 +85,6 @@ class MainScreen extends React.Component {
         this.props.navigation.navigate('FunFacts');
     }
     render() {
-        const { navigation } = this.props;
-        const { navigate } = this.props.navigation;
         return (
             <View style={styles.greenContainer}>
                 <View style={styles.menuContainer}>
@@ -121,8 +120,6 @@ class MainScreen extends React.Component {
 
 class MapScreen extends React.Component {
     render() {
-        const { navigation } = this.props;
-        const { navigate } = this.props.navigation;
         return (
             <View style={styles.greenContainer}>
                 <Image source={require('./app/img/pikaMap.png')} style={{height: '95%', width: '95%'}}/>
@@ -133,22 +130,25 @@ class MapScreen extends React.Component {
 
 class ProgressScreen extends React.Component {
     render() {
-        const {navigation} = this.props;
-        const {navigate} = this.props.navigation;
         return (
-            <View style={styles.greenContainer}>
-                <Text style={styles.body}>
-                    ProgressScreen Test
-                </Text>
-            </View>
+            <ScrollView style={styles.progressContainer}>
+                <ProgressItem/>
+                <ProgressItem/>
+                <ProgressItem/>
+                <ProgressItem/>
+                <ProgressItem/>
+                <ProgressItem/>
+                <ProgressItem/>
+                <ProgressItem/>
+                <ProgressItem/>
+                <ProgressItem/>
+            </ScrollView>
         );
     }
 }
 
 class InfoScreen extends React.Component {
     render () {
-        const {navigation} = this.props;
-        const {navigate} = this.props.navigation;
         return (
             <View style={styles.greenContainer}>
                 <Text style={styles.body}>
@@ -161,8 +161,6 @@ class InfoScreen extends React.Component {
 
 class FunFactsScreen extends React.Component {
     render () {
-        const {navigation} = this.props;
-        const {navigate} = this.props.navigation;
         return (
             <View style={styles.greenContainer}>
                 <Text style={styles.body}>
@@ -267,6 +265,12 @@ const styles = StyleSheet.create({
     button: {
         width: '50%',
         height: '50%',
+    },
+    progressContainer: {
+        flex: 1,
+        flexDirection: 'column',
+        width: '100%',
+        height: '100%',
     }
 });
 
